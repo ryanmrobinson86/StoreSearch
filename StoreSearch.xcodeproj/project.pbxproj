@@ -21,6 +21,7 @@
 		68ED33991948AE9300480944 /* StoreSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68ED33981948AE9300480944 /* StoreSearchTests.m */; };
 		68ED33A5195A089400480944 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68ED33A3195A089400480944 /* SearchViewController.m */; };
 		68ED33A6195A089400480944 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68ED33A4195A089400480944 /* SearchViewController.xib */; };
+		68ED33A9195F7F4300480944 /* SearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 68ED33A8195F7F4300480944 /* SearchResult.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		68ED33A2195A089400480944 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		68ED33A3195A089400480944 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		68ED33A4195A089400480944 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		68ED33A7195F7F4300480944 /* SearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResult.h; sourceTree = "<group>"; };
+		68ED33A8195F7F4300480944 /* SearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 				68ED337D1948AE9200480944 /* AppDelegate.m */,
 				68ED33A2195A089400480944 /* SearchViewController.h */,
 				68ED33A3195A089400480944 /* SearchViewController.m */,
+				68ED33A7195F7F4300480944 /* SearchResult.h */,
+				68ED33A8195F7F4300480944 /* SearchResult.m */,
 				68ED33A4195A089400480944 /* SearchViewController.xib */,
 				68ED33851948AE9200480944 /* Images.xcassets */,
 				68ED33741948AE9200480944 /* Supporting Files */,
@@ -251,6 +256,7 @@
 			files = (
 				68ED337E1948AE9200480944 /* AppDelegate.m in Sources */,
 				68ED33A5195A089400480944 /* SearchViewController.m in Sources */,
+				68ED33A9195F7F4300480944 /* SearchResult.m in Sources */,
 				68ED337A1948AE9200480944 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
