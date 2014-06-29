@@ -8,6 +8,10 @@
 
 #import "SearchViewController.h"
 #import "SearchResult.h"
+#import "SearchResultCell.h"
+
+static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
+static NSString * const NothingFoundCellIdentifier =@"NothingFoundCell";
 
 @interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -34,6 +38,14 @@
 {
   [super viewDidLoad];
   self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+  
+  UINib *cellNib = [UINib nibWithNibName:SearchResultCellIdentifier bundle:nil];
+  [self.tableView registerNib:cellNib forCellReuseIdentifier:SearchResultCellIdentifier];
+  
+  UINib *nothingFoundCellNib = [UINib nibWithNibName:NothingFoundCellIdentifier bundle:nil];
+  [self.tableView registerNib:nothingFoundCellNib forCellReuseIdentifier:NothingFoundCellIdentifier];
+  
+  self.tableView.rowHeight = 80;
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,23 +69,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  static NSString *CellIdentifier = @"SearchResultCell";
-  
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-  }
-  
   if ([_searchResults count]) {
+    SearchResultCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier forIndexPath:indexPath];
+    
     SearchResult *result = _searchResults[indexPath.row];
   
-    cell.textLabel.text = result.name;
-    cell.detailTextLabel.text = result.artistName;
+    cell.nameLabel.text = result.name;
+    cell.artistNameLabel.text = result.artistName;
+    return cell;
   } else {
-    cell.textLabel.text = @"(Nothing Found)";
+    return[tableView dequeueReusableCellWithIdentifier:NothingFoundCellIdentifier forIndexPath:indexPath];
   }
-  
-  return cell;
 }
 
 #pragma mark - UITableViewDelegate

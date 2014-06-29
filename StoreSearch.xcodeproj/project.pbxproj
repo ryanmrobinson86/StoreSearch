@@ -22,6 +22,9 @@
 		68ED33A5195A089400480944 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68ED33A3195A089400480944 /* SearchViewController.m */; };
 		68ED33A6195A089400480944 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68ED33A4195A089400480944 /* SearchViewController.xib */; };
 		68ED33A9195F7F4300480944 /* SearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 68ED33A8195F7F4300480944 /* SearchResult.m */; };
+		68ED33AB195F8C8B00480944 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68ED33AA195F8C8B00480944 /* SearchResultCell.xib */; };
+		68ED33AE195F9ED600480944 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 68ED33AD195F9ED600480944 /* SearchResultCell.m */; };
+		68ED33B0195FA27E00480944 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68ED33AF195FA27E00480944 /* NothingFoundCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,10 @@
 		68ED33A4195A089400480944 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		68ED33A7195F7F4300480944 /* SearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResult.h; sourceTree = "<group>"; };
 		68ED33A8195F7F4300480944 /* SearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResult.m; sourceTree = "<group>"; };
+		68ED33AA195F8C8B00480944 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
+		68ED33AC195F9ED600480944 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
+		68ED33AD195F9ED600480944 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
+		68ED33AF195FA27E00480944 /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,10 +126,14 @@
 				68ED337D1948AE9200480944 /* AppDelegate.m */,
 				68ED33A2195A089400480944 /* SearchViewController.h */,
 				68ED33A3195A089400480944 /* SearchViewController.m */,
+				68ED33AF195FA27E00480944 /* NothingFoundCell.xib */,
+				68ED33AC195F9ED600480944 /* SearchResultCell.h */,
+				68ED33AD195F9ED600480944 /* SearchResultCell.m */,
 				68ED33A7195F7F4300480944 /* SearchResult.h */,
 				68ED33A8195F7F4300480944 /* SearchResult.m */,
 				68ED33A4195A089400480944 /* SearchViewController.xib */,
 				68ED33851948AE9200480944 /* Images.xcassets */,
+				68ED33AA195F8C8B00480944 /* SearchResultCell.xib */,
 				68ED33741948AE9200480944 /* Supporting Files */,
 			);
 			path = StoreSearch;
@@ -235,6 +246,8 @@
 			files = (
 				68ED33861948AE9200480944 /* Images.xcassets in Resources */,
 				68ED33781948AE9200480944 /* InfoPlist.strings in Resources */,
+				68ED33AB195F8C8B00480944 /* SearchResultCell.xib in Resources */,
+				68ED33B0195FA27E00480944 /* NothingFoundCell.xib in Resources */,
 				68ED33A6195A089400480944 /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +269,7 @@
 			files = (
 				68ED337E1948AE9200480944 /* AppDelegate.m in Sources */,
 				68ED33A5195A089400480944 /* SearchViewController.m in Sources */,
+				68ED33AE195F9ED600480944 /* SearchResultCell.m in Sources */,
 				68ED33A9195F7F4300480944 /* SearchResult.m in Sources */,
 				68ED337A1948AE9200480944 /* main.m in Sources */,
 			);
