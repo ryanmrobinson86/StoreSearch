@@ -46,6 +46,7 @@ static NSString * const NothingFoundCellIdentifier =@"NothingFoundCell";
   [self.tableView registerNib:nothingFoundCellNib forCellReuseIdentifier:NothingFoundCellIdentifier];
   
   self.tableView.rowHeight = 80;
+  [self.searchBar becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
