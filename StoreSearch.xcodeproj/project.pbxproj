@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68779DE4197B111C002ADB04 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68779DE3197B111C002ADB04 /* LoadingCell.xib */; };
 		68ED336E1948AE9200480944 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68ED336D1948AE9200480944 /* Foundation.framework */; };
 		68ED33701948AE9200480944 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68ED336F1948AE9200480944 /* CoreGraphics.framework */; };
 		68ED33721948AE9200480944 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68ED33711948AE9200480944 /* UIKit.framework */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68779DE3197B111C002ADB04 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		68ED336A1948AE9200480944 /* StoreSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68ED336D1948AE9200480944 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68ED336F1948AE9200480944 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,13 +126,14 @@
 			children = (
 				68ED337C1948AE9200480944 /* AppDelegate.h */,
 				68ED337D1948AE9200480944 /* AppDelegate.m */,
-				68ED33A2195A089400480944 /* SearchViewController.h */,
-				68ED33A3195A089400480944 /* SearchViewController.m */,
+				68779DE3197B111C002ADB04 /* LoadingCell.xib */,
 				68ED33AF195FA27E00480944 /* NothingFoundCell.xib */,
 				68ED33AC195F9ED600480944 /* SearchResultCell.h */,
 				68ED33AD195F9ED600480944 /* SearchResultCell.m */,
 				68ED33A7195F7F4300480944 /* SearchResult.h */,
 				68ED33A8195F7F4300480944 /* SearchResult.m */,
+				68ED33A2195A089400480944 /* SearchViewController.h */,
+				68ED33A3195A089400480944 /* SearchViewController.m */,
 				68ED33A4195A089400480944 /* SearchViewController.xib */,
 				68ED33851948AE9200480944 /* Images.xcassets */,
 				68ED33AA195F8C8B00480944 /* SearchResultCell.xib */,
@@ -246,6 +249,7 @@
 			files = (
 				68ED33861948AE9200480944 /* Images.xcassets in Resources */,
 				68ED33781948AE9200480944 /* InfoPlist.strings in Resources */,
+				68779DE4197B111C002ADB04 /* LoadingCell.xib in Resources */,
 				68ED33AB195F8C8B00480944 /* SearchResultCell.xib in Resources */,
 				68ED33B0195FA27E00480944 /* NothingFoundCell.xib in Resources */,
 				68ED33A6195A089400480944 /* SearchViewController.xib in Resources */,
