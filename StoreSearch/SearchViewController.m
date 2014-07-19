@@ -11,7 +11,7 @@
 #import "SearchResultCell.h"
 
 static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
-static NSString * const NothingFoundCellIdentifier =@"NothingFoundCell";
+static NSString * const NothingFoundCellIdentifier = @"NothingFoundCell";
 
 @interface SearchViewController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
@@ -48,13 +48,6 @@ static NSString * const NothingFoundCellIdentifier =@"NothingFoundCell";
   self.tableView.rowHeight = 80;
   [self.searchBar becomeFirstResponder];
 }
-
-- (void)didReceiveMemoryWarning
-{
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -103,27 +96,80 @@ static NSString * const NothingFoundCellIdentifier =@"NothingFoundCell";
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-  _searchResults = [NSMutableArray arrayWithCapacity:10];
-  
-  [searchBar resignFirstResponder];
-  
-  if (![searchBar.text isEqualToString:@"justin beiber"]) {
-    for (int i = 0; i<3; i++)
-    {
-      SearchResult *result = [[SearchResult alloc] init];
+  if ([searchBar.text length] > 0) {
     
-      result.name = [NSString stringWithFormat:@"Fake Result %d for", i];
-      result.artistName = searchBar.text;
-      [_searchResults addObject:result];
+    [searchBar resignFirstResponder];
+    
+    _searchResults = [NSMutableArray arrayWithCapacity:10];
+    
+    NSURL *url = [self urlWithSearchText:searchBar.text];
+    NSString *jsonString = [self performStoreRequestWithURL:url];
+    if (jsonString == nil) {
+      [self showNetworkError];
+      return;
     }
+    
+    NSDictionary *resultsDictonary = [self parseJSON:jsonString];
+    if (resultsDictonary == nil) {
+      [self showNetworkError];
+      return;
+    }
+    
+    [self.tableView reloadData];
   }
-  
-  [self.tableView reloadData];
 }
+
+#pragma mark - Networking
 
 - (UIBarPosition)positionForBar:(id<UIBarPositioning>)bar
 {
   return UIBarPositionTopAttached;
+}
+
+- (NSURL *)urlWithSearchText:(NSString *)searchText
+{
+  NSString *escaped = [searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  NSString *urlString = [NSString stringWithFormat:@"http://itunes.apple.com/search?term=%@", escaped];
+  
+  return [NSURL URLWithString:urlString];
+}
+
+- (NSString *)performStoreRequestWithURL:(NSURL *)url
+{
+  NSError *error;
+  NSString *resultString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+  if (resultString == nil) {
+    NSLog(@"Download Error: '%@'",error);
+    return nil;
+  }
+  return resultString;
+}
+
+- (NSDictionary *)parseJSON:(NSString *)jsonString
+{
+  NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+  
+  NSError *error;
+  id resultObject = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+  
+  if (resultObject == nil) {
+    NSLog(@"Error parsing JSON: '%@'", error);
+    return nil;
+  }
+  
+  if (![resultObject isKindOfClass:[NSDictionary class]]) {
+    NSLog(@"JSON Error: Expected Dictonary");
+    return nil;
+  }
+  
+  return resultObject;
+}
+
+- (void)showNetworkError
+{
+  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Whoops..." message:@"There was an error reading from the iTunes Store. Please Try again" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+  
+  [alertView show];
 }
 
 @end
