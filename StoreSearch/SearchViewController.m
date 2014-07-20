@@ -87,51 +87,13 @@ static NSString * const LoadingCellIdentifier = @"LoadingCell";
     SearchResultCell *cell = [tableView dequeueReusableCellWithIdentifier:SearchResultCellIdentifier forIndexPath:indexPath];
     
     SearchResult *result = _searchResults[indexPath.row];
-  
-    cell.nameLabel.text = result.name;
     
-    NSString *artistName = result.artistName;
-    if (artistName == nil) {
-      artistName = @"Unknown";
-    }
-    
-    NSString *kind = [self kindForDisplay:result.kind];
-    if (kind == nil) {
-      kind = @"@???";
-    }
-    
-    cell.artistNameLabel.text = [NSString stringWithFormat:@"%@ (%@)", artistName, kind];
+    [cell configureForSearchResult:result];
     
     return cell;
   } else {
     return[tableView dequeueReusableCellWithIdentifier:NothingFoundCellIdentifier forIndexPath:indexPath];
   }
-}
-
-- (NSString *)kindForDisplay:(NSString *)kind
-{
-  if ([kind isEqualToString:@"album"]) {
-    return @"Album";
-  } else if ([kind isEqualToString:@"audiobook"]) {
-    return @"Audiobook";
-  } else if ([kind isEqualToString:@"book"]) {
-    return @"Book";
-  } else if ([kind isEqualToString:@"ebook"]) {
-    return @"E-Book";
-  } else if ([kind isEqualToString:@"feature-movie"]) {
-    return @"Movie";
-  } else if ([kind isEqualToString:@"music-video"]) {
-    return @"Music Video";
-  } else if ([kind isEqualToString:@"podcast"]) {
-    return @"Podcast";
-  } else if ([kind isEqualToString:@"software"]) {
-    return @"App";
-  } else if ([kind isEqualToString:@"song"]) {
-    return @"Song";
-  } else if([kind isEqualToString:@"tv-episode"]) {
-    return @"TV Episode";
-  }
-  return kind;
 }
 
 #pragma mark - UITableViewDelegate
@@ -163,7 +125,14 @@ static NSString * const LoadingCellIdentifier = @"LoadingCell";
 {
   _searchText = searchText;
   
-  [self performSearch];
+  if ([_searchText length] > 0) {
+    [self performSearch];
+  } else {
+    [_queue cancelAllOperations];
+    _isLoading = NO;
+    _searchResults = nil;
+    [self.tableView reloadData];
+  }
 }
 
 #pragma mark - UISegmentedControl
