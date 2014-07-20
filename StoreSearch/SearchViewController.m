@@ -9,6 +9,7 @@
 #import "SearchViewController.h"
 #import "SearchResult.h"
 #import "SearchResultCell.h"
+#import "DetailViewController.h"
 #import <AFNetworking/AFNetworking.h>
 
 static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
@@ -100,7 +101,14 @@ static NSString * const LoadingCellIdentifier = @"LoadingCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  [self.searchBar resignFirstResponder];
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  
+  DetailViewController *controller = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+  
+  [self.view addSubview:controller.view];
+  [self addChildViewController:controller];
+  [controller didMoveToParentViewController:self];
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
