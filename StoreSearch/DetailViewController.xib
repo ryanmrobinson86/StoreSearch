@@ -76,17 +76,26 @@
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wx3-ae-X0E">
-                            <rect key="frame" x="174" y="230" width="60" height="24"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wx3-ae-X0E">
+                            <rect key="frame" x="185" y="230" width="49" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="40A-vB-po5"/>
+                            </constraints>
+                            <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                             <state key="normal" title="$9.99">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="openInStore:" destination="-1" eventType="touchUpInside" id="rTU-xI-Li3"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="0.95000000000000007" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="260" id="4ta-wk-u4k"/>
+                        <constraint firstAttribute="trailing" secondItem="wx3-ae-X0E" secondAttribute="trailing" constant="6" id="AHw-9h-CW0"/>
+                        <constraint firstAttribute="bottom" secondItem="wx3-ae-X0E" secondAttribute="bottom" constant="6" id="DDI-wu-hDU"/>
                         <constraint firstAttribute="width" constant="240" id="VPc-iv-Ndh"/>
                     </constraints>
                 </view>

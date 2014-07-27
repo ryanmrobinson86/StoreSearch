@@ -26,6 +26,11 @@
     return self;
 }
 
+- (void)dealloc
+{
+  [self.artworkImageView cancelImageRequestOperation];
+}
+
 - (void)viewDidLoad
 {
   [super viewDidLoad];
@@ -58,7 +63,18 @@
   self.artistLabel.text = self.searchResult.artistName;
   self.kindLabel.text = [self.searchResult kindForDisplay];
   self.genreLabel.text = self.searchResult.genre;
-  self.priceButton.titleLabel.text = [NSString stringWithFormat:@"%@%.2f",[self.searchResult symbolForCurrency], [self.searchResult.price doubleValue]];
+  
+  NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+  [formatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+  [formatter setCurrencyCode:self.searchResult.currency];
+  
+  NSString *priceText;
+  if ([self.searchResult.price floatValue] == 0.0f) {
+    priceText = @"Free";
+  } else {
+    priceText = [formatter stringFromNumber:self.searchResult.price];
+  }
+  [self.priceButton setTitle:priceText forState:UIControlStateNormal];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
@@ -97,6 +113,11 @@
     return @"TV Episode";
   }
   return kind;
+}
+
+- (IBAction)openInStore:(id)sender
+{
+  [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.searchResult.storeURL]];
 }
 
 @end
