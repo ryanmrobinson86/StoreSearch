@@ -22,5 +22,7 @@
 
 - (NSComparisonResult)compareName:(SearchResult *)other;
 - (NSComparisonResult)compareArtist:(SearchResult *)other;
+- (NSString *)kindForDisplay;
+- (NSString *)symbolForCurrency;
 
 @end

@@ -11,6 +11,7 @@
 #import "SearchResultCell.h"
 #import "DetailViewController.h"
 #import <AFNetworking/AFNetworking.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 static NSString * const SearchResultCellIdentifier = @"SearchResultCell";
 static NSString * const NothingFoundCellIdentifier = @"NothingFoundCell";
@@ -105,6 +106,11 @@ static NSString * const LoadingCellIdentifier = @"LoadingCell";
   [tableView deselectRowAtIndexPath:indexPath animated:YES];
   
   DetailViewController *controller = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
+  SearchResult *result = (SearchResult *)_searchResults[indexPath.row];
+  
+  controller.searchResult = result;
+  
+  controller.view.frame = self.view.frame;
   
   [self.view addSubview:controller.view];
   [self addChildViewController:controller];
