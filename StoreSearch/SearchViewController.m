@@ -179,7 +179,6 @@ static NSString * const LoadingCellIdentifier = @"LoadingCell";
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
       [self parseDictonary:responseObject];
-      [_searchResults sortUsingSelector:@selector(compareName:)];
       
       _isLoading = NO;
       [self.tableView reloadData];

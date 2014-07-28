@@ -109,7 +109,7 @@
     [self.view removeFromSuperview];
     [self removeFromParentViewController];
     [_gradientView removeFromSuperview];
-  }];  
+  }];
 }
 
 - (void)presentInParentViewController:(UIViewController *)parentViewController
