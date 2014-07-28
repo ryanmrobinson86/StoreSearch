@@ -112,9 +112,7 @@ static NSString * const LoadingCellIdentifier = @"LoadingCell";
   
   controller.view.frame = self.view.frame;
   
-  [self.view addSubview:controller.view];
-  [self addChildViewController:controller];
-  [controller didMoveToParentViewController:self];
+  [controller presentInParentViewController:self];
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
